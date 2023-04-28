@@ -3,7 +3,7 @@
     <ui:VisualElement name="Container" class="container">
         <ui:VisualElement name="Inventory" class="inventory">
             <ui:Label tabindex="-1" text="Inventory&#10;" display-tooltip-when-elided="true" name="Header" class="header" />
-            <ui:VisualElement name="SlotContainer" class="slotContainer" />
+            <ui:VisualElement name="SlotContainer" class="slotContainer1" style="width: 100%; height: 100%;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

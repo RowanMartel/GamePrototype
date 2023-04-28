@@ -28,14 +28,14 @@
     border-bottom-width: 1px;
 }
 
-.slotContainer {
+.slotContainer1 {
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
     flex-grow: 1;
 }
 
-.slotContainer {
+.slotContainer2 {
     width: 128px;
     height: 128px;
     margin: 5px;

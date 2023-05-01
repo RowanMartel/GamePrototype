@@ -30,7 +30,10 @@ public class PlantingMenu : MonoBehaviour
 
     private void PlantSeedMenu(PointerDownEvent evt)
     {
-        CurrentSpot.PlantSomething(PlantTypeHandler.Plant.GrassBlade);
+        if (GameManager.GetItem("carrotspear", out Item carrotSpearItem)) {
+            CurrentSpot.PlantSomething(carrotSpearItem);
+        }
+
         CloseMenu();
     }
 

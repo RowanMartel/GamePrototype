@@ -10,6 +10,7 @@ public class MenuController : MonoBehaviour
     void Start()
     {
         doc = GetComponent<UIDocument>();
+        doc.rootVisualElement.visible = false;
     }
 
     void Update()
@@ -23,6 +24,7 @@ public class MenuController : MonoBehaviour
             }
             else
             {
+                InventoryUIController.instance.RefreshUI();
                 doc.rootVisualElement.visible = true;
                 Global.MenuOpen = true;
             }

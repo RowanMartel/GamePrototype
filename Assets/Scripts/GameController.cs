@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour
     public static Dictionary<string, ItemDetails> m_ItemDatabase = new Dictionary<string, ItemDetails>();
     private List<ItemDetails> m_PlayerInventory = new List<ItemDetails>();
     public static event OnInventoryChangedDelegate OnInventoryChanged = delegate { };
-
+    
 
     private void Awake()
     {

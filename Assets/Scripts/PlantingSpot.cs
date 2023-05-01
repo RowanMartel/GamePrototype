@@ -1,16 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlantingSpot : MonoBehaviour
 {
-    private PlantTypeHandler.Plant plant;
+    private Item plant;
     private MeshFilter plantMesh;
     public bool hasPlant;
     private float growTimer;
-    public PlantTypeHandler.Growth growth;
-    private Transform plantTransform;
-    private Vector3 plantScale;
+    public Item.Growth growth;
     private Inventory inventory;
 
     void Start()
@@ -21,47 +20,46 @@ public class PlantingSpot : MonoBehaviour
 
     void Update()
     {
-        if (hasPlant && growth != PlantTypeHandler.Growth.Ripe)
+        if (hasPlant && growth != Item.Growth.Ripe)
         {
             growTimer += Time.deltaTime;
-            if (growTimer > 5)
-            {
-                switch (growth)
-                {
-                    case PlantTypeHandler.Growth.Sprout:
-                        growth = PlantTypeHandler.Growth.Growing;
-                        plantTransform.localScale = new Vector3(plantScale.x / 2, plantScale.y /2, plantScale.z / 2);
-                        break;
-                    case PlantTypeHandler.Growth.Growing:
-                        growth = PlantTypeHandler.Growth.Ripe;
-                        plantTransform.localScale = plantScale;
-                        break;
-                }
+            if (growTimer > 5) {
+                growth++;
                 growTimer = 0;
             }
         }
+
+        if (hasPlant && plant.plantMesh != null)
+        {
+            Vector3 desiredScale = plant.scale;
+            switch (growth)
+            {
+                case Item.Growth.Sprout:
+                    desiredScale *= 0.2f;
+                    break;
+                case Item.Growth.Growing:
+                    desiredScale *= 0.5f;
+                    break;
+            }
+            Graphics.DrawMesh(plant.plantMesh,
+                Matrix4x4.TRS(transform.TransformPoint(plant.positionOffset), transform.rotation,desiredScale),
+                plant.plantMaterial, 0);
+        }
     }
 
-    public void PlantSomething(PlantTypeHandler.Plant plant)
+    public void PlantSomething(Item plant)
     {
-        if (hasPlant) return;
-        growth = PlantTypeHandler.Growth.Sprout;
+        if (hasPlant || !plant.plantable) return;
+        growth = Item.Growth.Sprout;
         this.plant = plant;
         hasPlant = true;
         growTimer = 0;
-        plantTransform = transform.parent.GetChild(1).GetChild((int)plant);
-        plantTransform.GetComponent<MeshRenderer>().enabled = true;
-        plantScale = new Vector3(plantTransform.localScale.x, plantTransform.localScale.y, plantTransform.localScale.z);
-        plantTransform.localScale = new Vector3(plantScale.x / 4, plantScale.y / 4, plantScale.z / 4);
     }
-    public void Harvest()
-    {
-        inventory.AddItem(plant);
+    public void Harvest() {
+        inventory.AddItem(plant.hashId);
         RemovePlant();
     }
-    public void RemovePlant()
-    {
-        plantTransform.GetComponent<MeshRenderer>().enabled = false;
+    public void RemovePlant() {
         hasPlant = false;
     }
 }

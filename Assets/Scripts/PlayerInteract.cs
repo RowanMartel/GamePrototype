@@ -41,8 +41,7 @@ public class PlayerInteract : MonoBehaviour
         switch (currentObject.tag)
         {
             case "PlantingSpot":
-                if (currentObject.GetComponent<PlantingSpot>().growth == PlantTypeHandler.Growth.Ripe && currentObject.GetComponent<PlantingSpot>().hasPlant)
-                {
+                if (currentObject.GetComponent<PlantingSpot>().growth == Item.Growth.Ripe && currentObject.GetComponent<PlantingSpot>().hasPlant) {
                     currentObject.GetComponent<PlantingSpot>().Harvest();
                     return;
                 }

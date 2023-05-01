@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIBuilder/Inventory.uss?fileID=7433441132597879392&amp;guid=4be39449a28c6d74d84b5e4b1f956535&amp;type=3#Inventory" />
+    <ui:VisualElement name="Container" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+        <ui:VisualElement name="PlantMenu" class="inventory" style="flex-grow: 1; background-color: rgb(28, 32, 36); height: 25%; max-height: 25%; width: 30%; max-width: 30%;">
+            <ui:Label tabindex="-1" text="Select Action" display-tooltip-when-elided="true" name="Header" class="header" />
+            <ui:VisualElement name="Slotcontainer" class="slotContainer1" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+                <ui:VisualElement name="Plant" class="slotContainer2" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-shrink: 1; background-image: url(&apos;project://database/Assets/Sprites/ItemIcons/GrassSeed.png?fileID=2800000&amp;guid=48c1b35588f1a9c42b9a715610de2973&amp;type=3#GrassSeed&apos;); -unity-background-scale-mode: scale-to-fit;">
+                    <ui:Label tabindex="-1" text="Plant" display-tooltip-when-elided="true" class="header" style="flex-direction: column; align-items: stretch; justify-content: flex-start; align-self: auto; bottom: auto; top: 128px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Remove" class="slotContainer2" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-shrink: 1; background-image: url(&apos;project://database/Assets/Sprites/Shovel.png?fileID=2800000&amp;guid=8b6415a3451e32649a11ab3c93180dad&amp;type=3#Shovel&apos;); -unity-background-scale-mode: scale-to-fit;">
+                    <ui:Label tabindex="-1" text="Remove" display-tooltip-when-elided="true" class="header" style="top: 128px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Cancel" class="slotContainer2" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-shrink: 1; background-image: url(&apos;project://database/Assets/Sprites/Cancel.png?fileID=2800000&amp;guid=e5f49b2aeafe16d49a722ac4be1b1e36&amp;type=3#Cancel&apos;); -unity-background-scale-mode: scale-to-fit;">
+                    <ui:Label tabindex="-1" text="Cancel" display-tooltip-when-elided="true" class="header" style="top: 128px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

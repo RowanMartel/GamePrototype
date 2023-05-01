@@ -6,15 +6,17 @@ public class PlantingSpot : MonoBehaviour
 {
     private PlantTypeHandler.Plant plant;
     private MeshFilter plantMesh;
-    private bool hasPlant;
+    public bool hasPlant;
     private float growTimer;
-    private PlantTypeHandler.Growth growth;
+    public PlantTypeHandler.Growth growth;
     private Transform plantTransform;
     private Vector3 plantScale;
+    private Inventory inventory;
 
     void Start()
     {
         hasPlant = false;
+        inventory = FindObjectOfType<Inventory>();
     }
 
     void Update()
@@ -54,7 +56,11 @@ public class PlantingSpot : MonoBehaviour
     }
     public void Harvest()
     {
-        if (!hasPlant || growth != PlantTypeHandler.Growth.Ripe) return;
+        inventory.AddItem(plant);
+        RemovePlant();
+    }
+    public void RemovePlant()
+    {
         plantTransform.GetComponent<MeshRenderer>().enabled = false;
         hasPlant = false;
     }

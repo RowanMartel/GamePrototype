@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     private GameObject currentObject; // current interactable object
+    private PlantingMenu plantingMenu;
 
     void Start()
     {
-        
+        plantingMenu = FindObjectOfType<PlantingMenu>();
     }
 
     void Update()
@@ -40,8 +41,13 @@ public class PlayerInteract : MonoBehaviour
         switch (currentObject.tag)
         {
             case "PlantingSpot":
-                currentObject.GetComponent<PlantingSpot>().Harvest();
-                currentObject.GetComponent<PlantingSpot>().PlantSomething(PlantTypeHandler.Plant.CarrotSpear);
+                if (currentObject.GetComponent<PlantingSpot>().growth == PlantTypeHandler.Growth.Ripe && currentObject.GetComponent<PlantingSpot>().hasPlant)
+                {
+                    currentObject.GetComponent<PlantingSpot>().Harvest();
+                    return;
+                }
+                plantingMenu.RegisterPlantingSpot(currentObject.GetComponent<PlantingSpot>());
+                plantingMenu.OpenMenu();
                 break;
         }
     }

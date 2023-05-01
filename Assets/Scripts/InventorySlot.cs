@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Scripting;
 using UnityEngine.UIElements;
+using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
 public class InventorySlot : VisualElement
 {
@@ -16,6 +18,7 @@ public class InventorySlot : VisualElement
         //Add USS style properties to the elements
         Icon.AddToClassList("slotIcon");
         AddToClassList("slotContainer2");
+        RegisterCallback<PointerDownEvent>(OnPointerDown);
     }
 
     public void HoldItem(ItemDetails item)
@@ -27,6 +30,19 @@ public class InventorySlot : VisualElement
     {
         ItemGuid = "";
         Icon.image = null;
+    }
+
+    private void OnPointerDown(PointerDownEvent evt)
+    {
+        //Not the left mouse button
+        if (evt.button != 0 || ItemGuid.Equals(""))
+        {
+            return;
+        }
+        //Clear the image
+        Icon.image = null;
+        //Start the drag
+        InventoryUIController.StartDrag(evt.position, this);
     }
 
     #region UXML

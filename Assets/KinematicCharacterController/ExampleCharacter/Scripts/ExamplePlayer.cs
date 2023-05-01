@@ -31,7 +31,7 @@ namespace KinematicCharacterController.Examples
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !Global.MenuOpen)
             {
                 Cursor.lockState = CursorLockMode.Locked;
             }

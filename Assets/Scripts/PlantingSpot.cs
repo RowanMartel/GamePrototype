@@ -42,7 +42,7 @@ public class PlantingSpot : MonoBehaviour
                     break;
             }
             Graphics.DrawMesh(plant.plantMesh,
-                Matrix4x4.TRS(transform.TransformPoint(plant.positionOffset), transform.rotation,desiredScale),
+                Matrix4x4.TRS(transform.TransformPoint(plant.positionOffset), transform.rotation, desiredScale),
                 plant.plantMaterial, 0);
         }
     }

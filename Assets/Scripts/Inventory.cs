@@ -13,7 +13,6 @@ public class Inventory : MonoBehaviour
             slots.Add(new InventorySlot());
         }
     }
-    public List<int> itemIds = new List<int>();
 
     public bool AddItem(string id, int amount = 1) => AddItem(id.ToHashId(),amount);
     public bool AddItem(int id, int amount = 1)
@@ -52,7 +51,6 @@ public class Inventory : MonoBehaviour
 
         desiredSlot.itemId = id;
         desiredSlot.itemAmount += amount;
-        itemIds.Add(id);
         InventoryUIController.instance.RefreshUI();
         return true;
     }

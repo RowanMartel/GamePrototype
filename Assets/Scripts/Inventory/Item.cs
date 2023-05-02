@@ -15,6 +15,7 @@ public class Item : ScriptableObject
     public Vector3 scale; 
     public bool plantable = true;
     public Item growsInto;
+    public int strength;
     public enum Growth
     {
         Sprout,

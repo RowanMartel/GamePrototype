@@ -22,3 +22,5 @@ MonoBehaviour:
   positionOffset: {x: 0, y: 0.2, z: 0}
   scale: {x: 18, y: 18, z: 18}
   plantable: 0
+  growsInto: {fileID: 0}
+  strength: 10

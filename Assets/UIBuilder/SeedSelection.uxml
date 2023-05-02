@@ -2,8 +2,9 @@
     <Style src="project://database/Assets/UIBuilder/Inventory.uss?fileID=7433441132597879392&amp;guid=4be39449a28c6d74d84b5e4b1f956535&amp;type=3#Inventory" />
     <ui:VisualElement name="Container" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
         <ui:VisualElement name="SelectionMenu" class="inventory" style="flex-grow: 1; background-color: rgb(28, 32, 36);">
-            <ui:Label tabindex="-1" text="Pick a seed to plant" display-tooltip-when-elided="true" class="header" style="font-size: 36px;" />
+            <ui:Label tabindex="-1" text="Pick a seed to plant" display-tooltip-when-elided="true" name="Label" class="header" style="font-size: 36px;" />
             <ui:VisualElement name="Seeds" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+            <ui:TextField picking-mode="Ignore" label="Input Choice" name="SeedBox" style="font-size: 32px; background-color: rgb(28, 32, 36); border-top-color: rgb(255, 197, 0); border-top-width: 5px; border-left-color: rgb(255, 197, 0); border-right-color: rgb(255, 197, 0); border-bottom-color: rgb(255, 197, 0); border-left-width: 5px; border-right-width: 5px; border-bottom-width: 5px; color: rgb(255, 255, 255);" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

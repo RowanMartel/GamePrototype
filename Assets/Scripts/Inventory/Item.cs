@@ -14,6 +14,7 @@ public class Item : ScriptableObject
     public Vector3 positionOffset;
     public Vector3 scale; 
     public bool plantable = true;
+    public Item growsInto;
     public enum Growth
     {
         Sprout,

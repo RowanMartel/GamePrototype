@@ -51,7 +51,7 @@ public class PlantingSpot : MonoBehaviour
     {
         if (hasPlant || !plant.plantable) return;
         growth = Item.Growth.Sprout;
-        this.plant = plant;
+        this.plant = plant.growsInto;
         hasPlant = true;
         growTimer = 0;
     }

@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.WSA;
+using Button = UnityEngine.UIElements.Button;
 
 public class PlantingMenu : MonoBehaviour
 {
@@ -116,7 +117,18 @@ public class PlantingMenu : MonoBehaviour
             {
                 if (item.plantable)
                 {
-                    Label itemLabel = new Label();
+                    Button itemLabel = new Button(() => {
+                        CurrentSpot.PlantSomething(item);
+                        for (int i = 0; i < inventory.slots.Count; i++)
+                        {
+                            if (inventory.slots[i].itemId == item.hashId)
+                            {
+                                inventory.slots[i].RemoveAmount(1);
+                                break;
+                            }
+                        }
+                        CloseMenu();
+                    });
                     itemLabel.text = item.name;
                     itemLabel.style.color = Color.white;
                     itemLabel.style.fontSize = 32;
@@ -126,7 +138,7 @@ public class PlantingMenu : MonoBehaviour
                 }
             }
         }
-        Label cancelLabel = new Label();
+        Button cancelLabel = new Button(CloseMenu);
         cancelLabel.text = "Cancel";
         cancelLabel.style.color = Color.white;
         cancelLabel.style.fontSize = 32;

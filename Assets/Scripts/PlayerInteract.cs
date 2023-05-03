@@ -28,9 +28,8 @@ public class PlayerInteract : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == 3)
-        {
-            currentObject.GetComponent<Outline>().enabled = false;
+        if (other.gameObject.layer == 3 && currentObject != null && currentObject.TryGetComponent( out Outline outline)) {
+            outline.enabled = false;
             currentObject = null;
         }
     }

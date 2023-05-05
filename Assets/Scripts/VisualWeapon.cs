@@ -11,6 +11,10 @@ public class VisualWeapon : MonoBehaviour
     public Vector3 attackPosition;
     public Vector3 attackRotation;
 
+    public Item weapon;
+
+    [SerializeField] bool isEnemy;
+
     public float attackDuration = 0.5f;
     public float recoverDuration = 0.5f;
     private Sequence attackSequence;
@@ -34,7 +38,7 @@ public class VisualWeapon : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && (attackSequence == null || !attackSequence.IsPlaying())) {
+        if (Input.GetKeyDown(KeyCode.Space) && (attackSequence == null || !attackSequence.IsPlaying()) && (!isEnemy)) {
             DoAttackAnimation();
         }
     }

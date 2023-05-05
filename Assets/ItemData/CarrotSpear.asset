@@ -23,4 +23,5 @@ MonoBehaviour:
   scale: {x: 18, y: 18, z: 18}
   plantable: 0
   growsInto: {fileID: 0}
+  equippable: 1
   strength: 10

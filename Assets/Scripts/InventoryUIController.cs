@@ -16,9 +16,12 @@ public class InventoryUIController : MonoBehaviour
     private static VisualElement m_GhostIcon;
     private static bool m_IsDragging;
     private static InventorySlotUI m_OriginalSlot;
+    private EquipMenu equipMenu;
+    private Button m_Button;
 
     private void Awake()
     {
+        equipMenu = FindObjectOfType<EquipMenu>();
         instance = this;
         m_Root = GetComponent<UIDocument>().rootVisualElement;
         m_SlotContainer = m_Root.Q<VisualElement>("SlotContainer");
@@ -29,16 +32,19 @@ public class InventoryUIController : MonoBehaviour
             InventoryUISlots.Add(item);
             m_SlotContainer.Add(item);
         }
-        GameController.OnInventoryChanged += GameController_OnInventoryChanged;
         m_GhostIcon = m_Root.Query<VisualElement>("GhostIcon");
+        m_Button = m_Root.Query<Button>();
+        m_Button.RegisterCallback<ClickEvent>(OpenEquip);
         m_SlotContainer.RegisterCallback<PointerMoveEvent>(OnPointerMove);
         m_GhostIcon.RegisterCallback<PointerMoveEvent>(OnPointerMove);
         m_GhostIcon.RegisterCallback<PointerUpEvent>(OnPointerUp);
         m_SlotContainer.RegisterCallback<PointerUpEvent>(OnPointerUp);
     }
 
-    private void GameController_OnInventoryChanged(string[] itemGuid, InventoryChangeType change) {
-        RefreshUI();
+    private void OpenEquip(ClickEvent evt)
+    {
+        m_Root.visible = false;
+        equipMenu.OpenMenu();
     }
 
     public static void StartDrag(Vector2 position, InventorySlotUI originalSlot)

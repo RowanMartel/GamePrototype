@@ -20,15 +20,4 @@ public class GameManager : MonoBehaviour
 
     public static bool GetItem(string str, out Item item) => GetItem(str.ToHashId(), out item);
     public static bool GetItem(int hashId, out Item item) => ItemDictionary.TryGetValue(hashId, out item);
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

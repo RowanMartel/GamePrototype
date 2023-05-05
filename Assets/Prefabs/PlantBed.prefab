@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1732211991127961155}
   - component: {fileID: 402266161649247562}
   - component: {fileID: 2228161617701832711}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4074748159027986898}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlantBed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,6 +153,10 @@ PrefabInstance:
     - target: {fileID: 1275142450019469446, guid: 10cb2d19d5388f54cac959e2fb1f8e8a, type: 3}
       propertyPath: m_Name
       value: PlantingSpot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275142450019469446, guid: 10cb2d19d5388f54cac959e2fb1f8e8a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4588274983274097429, guid: 10cb2d19d5388f54cac959e2fb1f8e8a, type: 3}
       propertyPath: m_RootOrder
@@ -198,6 +202,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4969390718808345955, guid: 10cb2d19d5388f54cac959e2fb1f8e8a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -219,6 +227,10 @@ PrefabInstance:
     - target: {fileID: 1275142450019469446, guid: 10cb2d19d5388f54cac959e2fb1f8e8a, type: 3}
       propertyPath: m_Name
       value: PlantingSpot (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275142450019469446, guid: 10cb2d19d5388f54cac959e2fb1f8e8a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4588274983274097429, guid: 10cb2d19d5388f54cac959e2fb1f8e8a, type: 3}
       propertyPath: m_RootOrder
@@ -264,6 +276,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4969390718808345955, guid: 10cb2d19d5388f54cac959e2fb1f8e8a, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -285,6 +301,10 @@ PrefabInstance:
     - target: {fileID: 1275142450019469446, guid: 10cb2d19d5388f54cac959e2fb1f8e8a, type: 3}
       propertyPath: m_Name
       value: PlantingSpot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275142450019469446, guid: 10cb2d19d5388f54cac959e2fb1f8e8a, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4588274983274097429, guid: 10cb2d19d5388f54cac959e2fb1f8e8a, type: 3}
       propertyPath: m_RootOrder
@@ -329,6 +349,10 @@ PrefabInstance:
     - target: {fileID: 4588274983274097429, guid: 10cb2d19d5388f54cac959e2fb1f8e8a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4969390718808345955, guid: 10cb2d19d5388f54cac959e2fb1f8e8a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

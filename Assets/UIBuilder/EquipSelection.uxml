@@ -2,8 +2,8 @@
     <Style src="project://database/Assets/UIBuilder/Inventory.uss?fileID=7433441132597879392&amp;guid=4be39449a28c6d74d84b5e4b1f956535&amp;type=3#Inventory" />
     <ui:VisualElement name="Container" class="container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
         <ui:VisualElement name="SelectionMenu" class="inventory" style="flex-grow: 1; background-color: rgb(28, 32, 36);">
-            <ui:Label tabindex="-1" text="Pick a seed to plant" display-tooltip-when-elided="true" name="Label" class="header" style="font-size: 36px;" />
-            <ui:VisualElement name="Seeds" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
+            <ui:Label tabindex="-1" text="Pick a weapon to equip" display-tooltip-when-elided="true" name="Label" class="header" style="font-size: 36px;" />
+            <ui:VisualElement name="Weapons" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

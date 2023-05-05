@@ -7,6 +7,10 @@ public class Global : MonoBehaviour
 {
     static ExamplePlayer playerController;
 
+    [SerializeField]
+    Transform playerTransform;
+    public static Vector3 playerPos;
+
     static bool menuOpen;
     public static bool MenuOpen
     {
@@ -17,12 +21,12 @@ public class Global : MonoBehaviour
             if (value)
             {
                 playerController.enabled = false;
-                UnityEngine.Cursor.lockState = CursorLockMode.None;
+                Cursor.lockState = CursorLockMode.None;
             }
             else
             {
                 playerController.enabled = true;
-                UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+                Cursor.lockState = CursorLockMode.Locked;
             }
         }
     }
@@ -31,5 +35,10 @@ public class Global : MonoBehaviour
     {
         playerController = FindObjectOfType<ExamplePlayer>();
         MenuOpen = false;
+    }
+
+    private void Update()
+    {
+        playerPos = playerTransform.position;
     }
 }

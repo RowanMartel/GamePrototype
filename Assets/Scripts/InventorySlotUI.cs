@@ -32,7 +32,6 @@ public class InventorySlotUI : VisualElement
     }
     public void Refresh(InventorySlot inventorySlot)
     {
-        Debug.Log($"slotIndex {slotIndex} inventorySlot.itemAmount {inventorySlot.itemAmount} found item {(GameManager.GetItem(inventorySlot.itemId, out Item iitemReference) ? iitemReference.name : "null")}");
         if (inventorySlot.itemAmount > 0 && GameManager.GetItem(inventorySlot.itemId, out Item itemReference)) {
             Icon.image = itemReference.icon;
             Amount.text = inventorySlot.itemAmount.ToString();

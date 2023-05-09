@@ -13,6 +13,9 @@ public class VisualWeapon : MonoBehaviour
 
     public Item weapon;
 
+    Global global;
+
+    public bool isAttacking;
     [SerializeField] bool isEnemy;
 
     public float attackDuration = 0.5f;
@@ -22,6 +25,8 @@ public class VisualWeapon : MonoBehaviour
     public TrailRenderer trail;
     private void Start()
     {
+        global = FindObjectOfType<Global>();
+        isAttacking = false;
         trail.emitting = false;
         transform.localPosition = regularPosition;
         transform.localRotation = Quaternion.Euler(regularRotation);
@@ -38,8 +43,9 @@ public class VisualWeapon : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && (attackSequence == null || !attackSequence.IsPlaying()) && (!isEnemy)) {
-            DoAttackAnimation();
+        if (Input.GetKeyDown(KeyCode.Space) && (attackSequence == null || !attackSequence.IsPlaying())) {
+            if (!isEnemy)
+                DoAttackAnimation();
         }
     }
 
@@ -47,21 +53,19 @@ public class VisualWeapon : MonoBehaviour
     [ContextMenu("DoAttack")]
     public void DoAttackAnimation()
     {
+        isAttacking = true;
         enemiesHit.Clear();
         trail.emitting = true;
         attackSequence = DOTween.Sequence();
         attackSequence.Append(transform.DOLocalMove(attackPosition, attackDuration).SetEase(Ease.InQuad));
-        attackSequence.Join(transform.DOLocalRotate(attackRotation, attackDuration).SetEase(Ease.InQuad).OnComplete(
-            () =>
-            {
-                Debug.Log("HIT!");
-            }));
+        attackSequence.Join(transform.DOLocalRotate(attackRotation, attackDuration).SetEase(Ease.InQuad));
         attackSequence.AppendInterval(0.2f);
         attackSequence.Append(transform.DOLocalMove(regularPosition, recoverDuration).SetEase(Ease.InOutQuad));
         attackSequence.Join(transform.DOLocalRotate(regularRotation, recoverDuration).SetEase(Ease.InOutQuad).OnComplete(
             () =>
             {
                 trail.emitting = false;
+                isAttacking = false;
             }));
 
         attackSequence.OnUpdate(() => {
@@ -77,8 +81,16 @@ public class VisualWeapon : MonoBehaviour
                     {
                         if (!enemiesHit.Contains(collidersFound[i].transform)) {
                             enemiesHit.Add(collidersFound[i].transform);
-                            collidersFound[i].transform.DOShakeScale(0.35f);
-                            collidersFound[i].transform.DOShakeRotation(0.35f);
+                            if (enemyLayer.value == global.layerEnemy)
+                            {
+                                collidersFound[i].transform.DOShakeScale(0.35f);
+                                collidersFound[i].transform.DOShakeRotation(0.35f);
+                                collidersFound[i].GetComponent<Enemy>().IsHit(weapon.strength);
+                            }
+                            else if (enemyLayer.value == global.layerPlayer)
+                            {
+                                collidersFound[i].GetComponent<PlayerHandler>().IsHit(weapon.strength);
+                            }
                         }
                     }
                 }

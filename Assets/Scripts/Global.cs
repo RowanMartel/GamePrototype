@@ -5,6 +5,14 @@ using UnityEngine;
 
 public class Global : MonoBehaviour
 {
+    // constants
+    public static int playerHpStart = 100;
+    public static int enemyPoolCount = 10;
+
+    // layer consts
+    public LayerMask layerEnemy;
+    public LayerMask layerPlayer;
+
     static ExamplePlayer playerController;
 
     [SerializeField]

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: PotatoSpud
   m_EditorClassIdentifier: 
   id: potatospud
-  hashId: -1370332646
+  hashId: 643859972
   icon: {fileID: 2800000, guid: bb46584edd69e1f40b32415eb15c339b, type: 3}
   name: Potato Spud
   description: Grows into an earth apple
-  plantMesh: {fileID: -5495902117074765545, guid: 96b2af8d0e416394991084e3e53730a7, type: 3}
-  plantMaterial: {fileID: -2926766047232897124, guid: 96b2af8d0e416394991084e3e53730a7, type: 3}
+  plantMesh: {fileID: -5495902117074765545, guid: bb646ce08e2455748abd93cb46f5cd81, type: 3}
+  plantMaterial: {fileID: -2926766047232897124, guid: bb646ce08e2455748abd93cb46f5cd81, type: 3}
   positionOffset: {x: 0, y: 0.2, z: 0}
   scale: {x: 0.1, y: 0.1, z: 0.1}
   plantable: 1

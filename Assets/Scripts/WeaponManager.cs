@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    public List<GameObject> weapons;
+    List<GameObject> weapons;
 
     void Start()
     {
+        weapons = new List<GameObject>();
+        for (int i = 0; i < transform.childCount; i++)
+            weapons.Add(transform.GetChild(i).gameObject);
         foreach (GameObject weapon in weapons)
             weapon.SetActive(false);
     }
@@ -15,6 +18,19 @@ public class WeaponManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void EquipEnemy(int tier)
+    {
+        tier /= 10;
+        GameObject weapon;
+        bool breakout = false;
+        while (!breakout)
+        {
+            weapon = weapons[Random.Range(0, weapons.Count)];
+            if (weapon.GetComponent<VisualWeapon>().weapon.tier <= tier) breakout = true;
+            Equip(weapon.GetComponent<VisualWeapon>().weapon);
+        }
     }
 
     public void Equip(Item weapon)

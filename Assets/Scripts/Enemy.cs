@@ -34,11 +34,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] float attackRange;
 
     VisualWeapon weapon;
+    EnemyManager manager;
 
     void Start()
     {
+        manager = FindObjectOfType<EnemyManager>();
         agent = GetComponent<NavMeshAgent>();
-        State = states.chasing;
+        State = states.inactive;
         weapon = GetComponentInChildren<VisualWeapon>();
     }
 
@@ -81,13 +83,17 @@ public class Enemy : MonoBehaviour
         switch (newState)
         {
             case states.idle:
+                manager.active++;
+                State = states.chasing;
                 break;
             case states.chasing:
                 break;
             case states.inactive:
-                gameObject.SetActive(false);
+                manager.active--;
+                GoInactive();
                 break;
             case states.dead:
+                manager.kills++;
                 State = states.inactive;
                 break;
             case states.attacking:
@@ -120,5 +126,19 @@ public class Enemy : MonoBehaviour
         float difference = Vector3.Distance(transform.position, Global.playerPos);
         if (difference <= attackRange) return true;
         else return false;
+    }
+
+    public void GoActive()
+    {
+        GetComponent<MeshRenderer>().enabled = true;
+        GetComponent<CapsuleCollider>().enabled = true;
+        transform.GetChild(0).gameObject.SetActive(true);
+        State = states.idle;
+    }
+    void GoInactive()
+    {
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 }

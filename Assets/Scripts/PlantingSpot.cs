@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlantingSpot : MonoBehaviour
 {
     private Item plant;
-    private MeshFilter plantMesh;
     public bool hasPlant;
     private float growTimer;
     public Item.Growth growth;

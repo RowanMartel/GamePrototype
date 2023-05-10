@@ -20,6 +20,8 @@ public class VisualWeapon : MonoBehaviour
 
     public float attackDuration = 0.5f;
     public float recoverDuration = 0.5f;
+    public float startCheck = 0.25f;
+    public float endCheck = 0.7f;
     private Sequence attackSequence;
 
     public TrailRenderer trail;

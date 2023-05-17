@@ -25,3 +25,4 @@ MonoBehaviour:
   growsInto: {fileID: 11400000, guid: eb482a4091ada1c4f87f78040b7f9db8, type: 2}
   equippable: 0
   strength: 0
+  tier: 0

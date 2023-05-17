@@ -8,6 +8,9 @@ public class EnemyManager : MonoBehaviour
     GameObject enemyPrefab;
     GameObject[] enemies;
 
+    [SerializeField]
+    List<Transform> spawns;
+
     float timer;
     [HideInInspector] public int active;
     [HideInInspector] public int kills;
@@ -30,10 +33,18 @@ public class EnemyManager : MonoBehaviour
         if (timer >= 1)
         {
             timer = 0;
-            if (active == 0)
+            if (active <= (kills / 2))
             {
-                enemies[0].GetComponent<Enemy>().GoActive();
-                enemies[0].GetComponentInChildren<WeaponManager>().EquipEnemy(kills);
+                Transform spawn = spawns[Random.Range(0, spawns.Count)];
+                for (int i = 0; i < enemies.Length; i++)
+                {
+                    if (enemies[i].GetComponent<Enemy>().State == Enemy.states.inactive)
+                    {
+                        enemies[i].GetComponent<Enemy>().GoActive(spawn);
+                        enemies[i].GetComponentInChildren<WeaponManager>().EquipEnemy(kills);
+                        break;
+                    }
+                }
             }
         }
     }

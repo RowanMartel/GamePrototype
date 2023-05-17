@@ -123,7 +123,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+  itemDrop: {fileID: 4724741794870618157, guid: 09b4a5df3d19fd64289376f203f7ea08, type: 3}
   attackRange: 2
+  weapon: {fileID: 0}
 --- !u!195 &7516773483507146686
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -154,13 +156,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3593583294516421731}
     m_Modifications:
+    - target: {fileID: 373418684427371587, guid: 95f506e296d16b440b37941f452c8b30, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 373418684427371587, guid: 95f506e296d16b440b37941f452c8b30, type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 520427296010940459, guid: 95f506e296d16b440b37941f452c8b30, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 520427296010940459, guid: 95f506e296d16b440b37941f452c8b30, type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 1756486329615792684, guid: 95f506e296d16b440b37941f452c8b30, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2420004338276680474, guid: 95f506e296d16b440b37941f452c8b30, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404473124109734651, guid: 95f506e296d16b440b37941f452c8b30, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404473124109734651, guid: 95f506e296d16b440b37941f452c8b30, type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 4167210214551017000, guid: 95f506e296d16b440b37941f452c8b30, type: 3}
       propertyPath: m_Name
@@ -210,9 +236,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6522333372533504844, guid: 95f506e296d16b440b37941f452c8b30, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6522333372533504844, guid: 95f506e296d16b440b37941f452c8b30, type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 8977699248972331517, guid: 95f506e296d16b440b37941f452c8b30, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

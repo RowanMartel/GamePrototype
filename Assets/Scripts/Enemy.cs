@@ -8,8 +8,12 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     int health;
+    int startingHealth = 50;
 
-    enum states
+    [SerializeField]
+    GameObject itemDrop;
+
+    public enum states
     {
         idle,
         chasing,
@@ -19,7 +23,7 @@ public class Enemy : MonoBehaviour
         inactive
     }
     states state;
-    states State 
+    public states State 
     {
         get { return state; }
         set 
@@ -33,11 +37,13 @@ public class Enemy : MonoBehaviour
     Vector3 currentTarget;
     [SerializeField] float attackRange;
 
-    VisualWeapon weapon;
+    public VisualWeapon weapon;
     EnemyManager manager;
+    GameManager gameManager;
 
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         manager = FindObjectOfType<EnemyManager>();
         agent = GetComponent<NavMeshAgent>();
         State = states.inactive;
@@ -83,6 +89,7 @@ public class Enemy : MonoBehaviour
         switch (newState)
         {
             case states.idle:
+                health = startingHealth;
                 manager.active++;
                 State = states.chasing;
                 break;
@@ -94,6 +101,7 @@ public class Enemy : MonoBehaviour
                 break;
             case states.dead:
                 manager.kills++;
+                DropItem();
                 State = states.inactive;
                 break;
             case states.attacking:
@@ -128,8 +136,10 @@ public class Enemy : MonoBehaviour
         else return false;
     }
 
-    public void GoActive()
+    public void GoActive(Transform spawn)
     {
+        transform.position = spawn.position;
+        transform.eulerAngles = spawn.eulerAngles;
         GetComponent<MeshRenderer>().enabled = true;
         GetComponent<CapsuleCollider>().enabled = true;
         transform.GetChild(0).gameObject.SetActive(true);
@@ -140,5 +150,23 @@ public class Enemy : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<CapsuleCollider>().enabled = false;
         transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    public Item PickSeedDrop()
+    {
+        Item seed;
+        while (true)
+        {
+            seed = gameManager.Items[Random.Range(0, gameManager.Items.Count)];
+            if (seed.tier <= manager.kills / 10 && seed.plantable)
+                return seed;
+        }
+    }
+
+    void DropItem()
+    {
+        GameObject drop = Instantiate(itemDrop, transform.position, transform.rotation);
+        drop.GetComponent<Pickup>().item = PickSeedDrop();
+        drop.GetComponent<Pickup>().Init();
     }
 }

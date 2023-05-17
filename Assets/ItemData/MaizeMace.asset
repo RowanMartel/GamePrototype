@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b90251218ce1b04294821a969ab8dfd, type: 3}
-  m_Name: PotatoMasher
+  m_Name: MaizeMace
   m_EditorClassIdentifier: 
-  id: potatomasher
-  hashId: 1630021495
-  icon: {fileID: 2800000, guid: 41c3eb346e5fba641b4b17dbee1518f9, type: 3}
-  name: Potato Masher
-  description: Mash people with potatoes
-  plantMesh: {fileID: -5495902117074765545, guid: bb646ce08e2455748abd93cb46f5cd81, type: 3}
-  plantMaterial: {fileID: -2926766047232897124, guid: bb646ce08e2455748abd93cb46f5cd81, type: 3}
+  id: MaizeMace
+  hashId: 0
+  icon: {fileID: 2800000, guid: ea3cbdef44a3d394f95b2969616955ae, type: 3}
+  name: Maize Mace
+  description: Amaizing
+  plantMesh: {fileID: 2534964839176971238, guid: 8ff64c1b4513bfb4fa271ea39d68b19f, type: 3}
+  plantMaterial: {fileID: 6108123836226253010, guid: 8ff64c1b4513bfb4fa271ea39d68b19f, type: 3}
   positionOffset: {x: 0, y: 0, z: 0}
-  scale: {x: 0.129, y: 0.129, z: -0.469}
+  scale: {x: 1, y: 1, z: 1}
   plantable: 0
   growsInto: {fileID: 0}
   equippable: 1
   strength: 20
-  tier: 1
+  tier: 2

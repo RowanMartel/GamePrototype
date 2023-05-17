@@ -7,7 +7,7 @@ public class Global : MonoBehaviour
 {
     // constants
     public static int playerHpStart = 100;
-    public static int enemyPoolCount = 10;
+    public static int enemyPoolCount = 5;
 
     // layer consts
     public LayerMask layerEnemy;

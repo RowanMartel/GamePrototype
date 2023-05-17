@@ -24,4 +24,5 @@ MonoBehaviour:
   plantable: 0
   growsInto: {fileID: 0}
   equippable: 1
-  strength: 12
+  strength: 15
+  tier: 0

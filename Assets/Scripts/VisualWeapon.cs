@@ -25,7 +25,7 @@ public class VisualWeapon : MonoBehaviour
     private Sequence attackSequence;
 
     public TrailRenderer trail;
-    private void Start()
+    private void Awake()
     {
         global = FindObjectOfType<Global>();
         isAttacking = false;
@@ -83,10 +83,14 @@ public class VisualWeapon : MonoBehaviour
                     {
                         if (!enemiesHit.Contains(collidersFound[i].transform)) {
                             enemiesHit.Add(collidersFound[i].transform);
-                            if (enemyLayer.value == global.layerEnemy)
+                            if (enemyLayer == global.layerEnemy && !isEnemy)
                             {
-                                collidersFound[i].transform.DOShakeScale(0.35f);
-                                collidersFound[i].transform.DOShakeRotation(0.35f);
+                                collidersFound[i].transform.DOShakeScale(0.25f).OnComplete(
+                                    () =>
+                                    {
+                                        collidersFound[i - 1].transform.localScale = Vector3.one;
+                                    });
+                                collidersFound[i].transform.DOShakeRotation(0.25f);
                                 collidersFound[i].GetComponent<Enemy>().IsHit(weapon.strength);
                             }
                             else if (enemyLayer.value == global.layerPlayer)

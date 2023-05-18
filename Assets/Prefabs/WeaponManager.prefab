@@ -998,8 +998,8 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  checkRadius: 0.82
-  forwardAmount: 1.73
+  checkRadius: 1
+  forwardAmount: 1.25
   enemiesHit: []
 --- !u!1001 &8094754374821364908
 PrefabInstance:

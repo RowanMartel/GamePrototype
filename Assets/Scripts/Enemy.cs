@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour
     int health;
     int startingHealth = 50;
 
+    float timer;
+    bool attackWait;
+
     [SerializeField]
     GameObject itemDrop;
 
@@ -68,10 +71,24 @@ public class Enemy : MonoBehaviour
                 break;
             case states.attacking:
                 if (!InAttackRange() && !weapon.isAttacking) State = states.chasing;
-                else TryAttack();
+                else
+                {
+                    attackWait = true;
+                    timer = 0;
+                }
                 break;
             case states.dying:
                 break;
+        }
+
+        if (attackWait)
+        {
+            if (timer >= Global.enemyAtkTimer)
+            {
+                attackWait = false;
+                TryAttack();
+            }
+            timer += Time.deltaTime;
         }
     }
 

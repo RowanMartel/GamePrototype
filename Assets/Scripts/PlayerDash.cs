@@ -9,12 +9,11 @@ public class PlayerDash : MonoBehaviour
     [HideInInspector] public float duration;
     [HideInInspector] public float dashSpeed;
 
-    float baseWalkSpeed;
     [SerializeField] float baseCooldown;
     [SerializeField] float baseDuration;
     [SerializeField] float baseDashSpeed;
 
-    bool onCooldown, dashing;
+    bool onCooldown;
     float timer;
 
     ExampleCharacterController controller;
@@ -22,9 +21,7 @@ public class PlayerDash : MonoBehaviour
     void Start()
     {
         onCooldown = false;
-        dashing = false;
         controller = GetComponent<ExampleCharacterController>();
-        baseWalkSpeed = controller.MaxStableMoveSpeed;
         Init();
     }
 
@@ -33,17 +30,7 @@ public class PlayerDash : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && !onCooldown)
             Dash();
 
-        if (dashing)
-        {
-            if (timer >= duration)
-            {
-                dashing = false;
-                onCooldown = true;
-                controller.MaxStableMoveSpeed = baseWalkSpeed;
-            }
-            timer += Time.deltaTime;
-        }
-        else if (onCooldown)
+        if (onCooldown)
         {
             if (timer >= cooldown)
                 onCooldown = false;
@@ -53,15 +40,13 @@ public class PlayerDash : MonoBehaviour
 
     void Dash()
     {
-        Debug.Log("wefgag");
-        controller.MaxStableMoveSpeed = dashSpeed;
-        dashing = true;
+        controller.AddVelocity(transform.forward * dashSpeed);
+        onCooldown = true;
         timer = 0;
     }
 
     public void Init()
     {
-        duration = baseDuration;
         cooldown = baseCooldown;
         dashSpeed = baseDashSpeed;
     }

@@ -6,11 +6,9 @@ using UnityEngine;
 public class PlayerDash : MonoBehaviour
 {
     [HideInInspector] public float cooldown;
-    [HideInInspector] public float duration;
     [HideInInspector] public float dashSpeed;
 
     [SerializeField] float baseCooldown;
-    [SerializeField] float baseDuration;
     [SerializeField] float baseDashSpeed;
 
     bool onCooldown;

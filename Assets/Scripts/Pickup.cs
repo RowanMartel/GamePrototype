@@ -37,6 +37,7 @@ public class Pickup : MonoBehaviour
             GetComponent<MeshRenderer>().enabled = false;
             GetComponent<MeshCollider>().enabled = false;
             inventory.AddItem(item.id, amount);
+            Score.modifyScore(1);
             Destroy(gameObject);
         }
     }

@@ -12,6 +12,7 @@ public class Item : ScriptableObject
     public Mesh plantMesh;
     public Material plantMaterial;
     public Vector3 positionOffset;
+    public Vector3 rotation;
     public Vector3 scale; 
     public bool plantable = true;
     public Item growsInto;

@@ -20,7 +20,8 @@ MonoBehaviour:
   plantMesh: {fileID: 2534964839176971238, guid: 1190d8c1cba62f148a8a2abec75716a7, type: 3}
   plantMaterial: {fileID: -1876833189245319969, guid: 1190d8c1cba62f148a8a2abec75716a7, type: 3}
   positionOffset: {x: 0, y: 0, z: 0}
-  scale: {x: 0.1, y: 0.1, z: 0.1}
+  rotation: {x: 90, y: 0, z: 0}
+  scale: {x: 0.1, y: 0.07, z: 0.1}
   plantable: 0
   growsInto: {fileID: 0}
   equippable: 1

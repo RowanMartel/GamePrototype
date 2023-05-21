@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlantingSpot : MonoBehaviour
@@ -41,7 +42,7 @@ public class PlantingSpot : MonoBehaviour
                     break;
             }
             Graphics.DrawMesh(plant.plantMesh,
-                Matrix4x4.TRS(transform.TransformPoint(plant.positionOffset), transform.rotation, desiredScale),
+                Matrix4x4.TRS(transform.TransformPoint(plant.positionOffset), Quaternion.Euler(plant.rotation.x, plant.rotation.y, plant.rotation.z), desiredScale),
                 plant.plantMaterial, 0);
         }
     }
@@ -56,6 +57,7 @@ public class PlantingSpot : MonoBehaviour
     }
     public void Harvest() {
         inventory.AddItem(plant.hashId);
+        Score.modifyScore(10);
         RemovePlant();
     }
     public void RemovePlant() {

@@ -19,8 +19,9 @@ MonoBehaviour:
   description: Mash people with potatoes
   plantMesh: {fileID: -5495902117074765545, guid: bb646ce08e2455748abd93cb46f5cd81, type: 3}
   plantMaterial: {fileID: -2926766047232897124, guid: bb646ce08e2455748abd93cb46f5cd81, type: 3}
-  positionOffset: {x: 0, y: 0, z: 0}
-  scale: {x: 0.129, y: 0.129, z: -0.469}
+  positionOffset: {x: 0, y: 0, z: -0.175}
+  rotation: {x: 270, y: 0, z: 0}
+  scale: {x: 16, y: 16, z: 40}
   plantable: 0
   growsInto: {fileID: 0}
   equippable: 1

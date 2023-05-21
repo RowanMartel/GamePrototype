@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -44,7 +43,7 @@ public class Enemy : MonoBehaviour
     EnemyManager manager;
     GameManager gameManager;
 
-    void Start()
+    void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
         manager = FindObjectOfType<EnemyManager>();
@@ -71,7 +70,7 @@ public class Enemy : MonoBehaviour
                 break;
             case states.attacking:
                 if (!InAttackRange() && !weapon.isAttacking) State = states.chasing;
-                else
+                else if (!attackWait)
                 {
                     attackWait = true;
                     timer = 0;
@@ -117,6 +116,7 @@ public class Enemy : MonoBehaviour
                 GoInactive();
                 break;
             case states.dead:
+                Score.modifyScore(5);
                 manager.kills++;
                 DropItem();
                 State = states.inactive;

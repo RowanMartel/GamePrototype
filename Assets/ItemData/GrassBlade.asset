@@ -27,3 +27,4 @@ MonoBehaviour:
   equippable: 1
   strength: 15
   tier: 0
+  attackAnim: Attack

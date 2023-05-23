@@ -19,6 +19,7 @@ public class Item : ScriptableObject
     public bool equippable;
     public int strength;
     public int tier;
+    public string attackAnim;
     public enum Growth
     {
         Sprout,

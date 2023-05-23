@@ -6,15 +6,17 @@ public class PlayerInteract : MonoBehaviour
 {
     private GameObject currentObject; // current interactable object
     private PlantingMenu plantingMenu;
+    private Animator anim;
 
     void Start()
     {
+        anim = FindObjectOfType<Animator>();
         plantingMenu = FindObjectOfType<PlantingMenu>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) Interact();
+        if (Input.GetKeyDown(KeyCode.E)) Interact();
     }
 
     private void OnTriggerStay(Collider other)
@@ -42,6 +44,7 @@ public class PlayerInteract : MonoBehaviour
             case "PlantingSpot":
                 if (currentObject.GetComponent<PlantingSpot>().growth == Item.Growth.Ripe && currentObject.GetComponent<PlantingSpot>().hasPlant) {
                     currentObject.GetComponent<PlantingSpot>().Harvest();
+                    anim.Play("Base Layer.Harvest");
                     return;
                 }
                 plantingMenu.RegisterPlantingSpot(currentObject.GetComponent<PlantingSpot>());

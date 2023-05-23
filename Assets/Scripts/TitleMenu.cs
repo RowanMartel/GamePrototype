@@ -28,12 +28,14 @@ public class TitleMenu : MonoBehaviour
     {
         m_Root.visible = true;
         Time.timeScale = 0;
+        Global.MenuOpen = true;
     }
 
     void StartGame(ClickEvent evt)
     {
         m_Root.visible = false;
         Time.timeScale = 1;
+        Global.MenuOpen = false;
     }
     void CloseGame(ClickEvent evt)
     {

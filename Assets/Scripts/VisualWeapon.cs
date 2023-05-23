@@ -14,6 +14,7 @@ public class VisualWeapon : MonoBehaviour
     public Item weapon;
 
     Global global;
+    Animator anim;
 
     public bool isAttacking;
     [SerializeField] bool isEnemy;
@@ -32,6 +33,10 @@ public class VisualWeapon : MonoBehaviour
         trail.emitting = false;
         transform.localPosition = regularPosition;
         transform.localRotation = Quaternion.Euler(regularRotation);
+    }
+    private void Start()
+    {
+        anim = transform.root.GetComponentInChildren<Animator>();
     }
 
     public LayerMask enemyLayer;
@@ -55,6 +60,7 @@ public class VisualWeapon : MonoBehaviour
     [ContextMenu("DoAttack")]
     public void DoAttackAnimation()
     {
+        if (anim) anim.Play("Base Layer." + weapon.attackAnim);
         isAttacking = true;
         enemiesHit.Clear();
         trail.emitting = true;

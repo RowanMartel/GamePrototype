@@ -20,9 +20,11 @@ public class PlantingMenu : MonoBehaviour
 
     private PlantingSpot CurrentSpot;
     private Inventory inventory;
+    private Animator anim;
 
     void Start()
     {
+        anim = FindObjectOfType<Animator>();
         inventory = FindObjectOfType<Inventory>();
         m_Root = GetComponent<UIDocument>().rootVisualElement;
         m_SeedPicker = GameObject.Find("SeedPicker").GetComponent<UIDocument>().rootVisualElement;
@@ -39,6 +41,7 @@ public class PlantingMenu : MonoBehaviour
 
     void Remove(PointerDownEvent evt)
     {
+        anim.Play("Base Layer.Harvest");
         CurrentSpot.RemovePlant();
         CloseMenu();
     }
@@ -91,6 +94,7 @@ public class PlantingMenu : MonoBehaviour
                                 break;
                             }
                         }
+                        anim.Play("Base Layer.Plant");
                         CloseMenu();
                     });
                     itemLabel.text = item.name;

@@ -15,11 +15,13 @@ public class PlayerDash : MonoBehaviour
     float timer;
 
     ExampleCharacterController controller;
+    Animator anim;
 
     void Start()
     {
         onCooldown = false;
         controller = GetComponent<ExampleCharacterController>();
+        anim = GetComponentInChildren<Animator>();
         Init();
     }
 
@@ -38,6 +40,7 @@ public class PlayerDash : MonoBehaviour
 
     void Dash()
     {
+        anim.Play("Base Layer.DodgeRoll");
         controller.AddVelocity(transform.forward * dashSpeed);
         onCooldown = true;
         timer = 0;

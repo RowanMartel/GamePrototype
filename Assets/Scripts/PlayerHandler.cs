@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerHandler : MonoBehaviour
@@ -13,6 +12,7 @@ public class PlayerHandler : MonoBehaviour
     TMP_Text healthText;
     string baseHealthText;
     Animator anim;
+    TitleMenu titleMenu;
 
     // velocity
     Vector3 PrevPos;
@@ -21,6 +21,7 @@ public class PlayerHandler : MonoBehaviour
 
     void Start()
     {
+        titleMenu = FindObjectOfType<TitleMenu>();
         PrevPos = transform.position;
         NewPos = transform.position;
         anim = GetComponentInChildren<Animator>();
@@ -53,7 +54,6 @@ public class PlayerHandler : MonoBehaviour
     void Die()
     {
         anim.Play("Base Layer.Died");
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        titleMenu.EndScreen();
     }
 }

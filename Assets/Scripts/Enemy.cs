@@ -11,9 +11,15 @@ public class Enemy : MonoBehaviour
 
     float timer;
     bool attackWait;
+    Animator anim;
 
     [SerializeField]
     GameObject itemDrop;
+
+    // velocity
+    Vector3 PrevPos;
+    Vector3 NewPos;
+    Vector3 ObjVelocity;
 
     public enum states
     {
@@ -45,6 +51,7 @@ public class Enemy : MonoBehaviour
 
     void Awake()
     {
+        anim = GetComponentInChildren<Animator>();
         gameManager = FindObjectOfType<GameManager>();
         manager = FindObjectOfType<EnemyManager>();
         agent = GetComponent<NavMeshAgent>();
@@ -52,8 +59,16 @@ public class Enemy : MonoBehaviour
         weapon = GetComponentInChildren<VisualWeapon>();
     }
 
+    private void Start()
+    {
+        PrevPos = transform.position;
+        NewPos = transform.position;
+    }
+
     void Update()
     {
+        anim.SetFloat("Speed", ObjVelocity.magnitude);
+
         currentTarget = GetTarget();
         agent.SetDestination(currentTarget);
 
@@ -89,6 +104,13 @@ public class Enemy : MonoBehaviour
             }
             timer += Time.deltaTime;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        NewPos = transform.position;  // each frame track the new position
+        ObjVelocity = (NewPos - PrevPos) / Time.fixedDeltaTime;  // velocity = dist/time
+        PrevPos = NewPos;  // update position for next frame calculation
     }
 
     void TryAttack()
@@ -144,6 +166,7 @@ public class Enemy : MonoBehaviour
             health = 0;
             State = states.dying;
         }
+        else anim.Play("Base Layer.Hurt");
     }
 
     bool InAttackRange()
@@ -157,14 +180,14 @@ public class Enemy : MonoBehaviour
     {
         transform.position = spawn.position;
         transform.eulerAngles = spawn.eulerAngles;
-        GetComponent<MeshRenderer>().enabled = true;
+        GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
         GetComponent<CapsuleCollider>().enabled = true;
         transform.GetChild(0).gameObject.SetActive(true);
         State = states.idle;
     }
     void GoInactive()
     {
-        GetComponent<MeshRenderer>().enabled = false;
+        GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
         GetComponent<CapsuleCollider>().enabled = false;
         transform.GetChild(0).gameObject.SetActive(false);
     }

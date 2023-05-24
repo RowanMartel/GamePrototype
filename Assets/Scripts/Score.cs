@@ -7,7 +7,7 @@ public class Score : MonoBehaviour
 {
     static string baseText;
     static TMP_Text scoreText;
-    static int score;
+    public static int score;
 
     void Start()
     {

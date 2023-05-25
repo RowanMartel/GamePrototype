@@ -17,6 +17,7 @@ public class Item : ScriptableObject
     public bool plantable = true;
     public Item growsInto;
     public bool equippable;
+    public bool useable;
     public int strength;
     public int tier;
     public string attackAnim;

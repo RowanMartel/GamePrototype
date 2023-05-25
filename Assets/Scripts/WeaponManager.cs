@@ -6,7 +6,7 @@ public class WeaponManager : MonoBehaviour
 {
     List<GameObject> weapons;
 
-    void Start()
+    void Awake()
     {
         weapons = new List<GameObject>();
         for (int i = 0; i < transform.childCount; i++)

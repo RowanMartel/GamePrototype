@@ -57,6 +57,7 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         State = states.inactive;
         weapon = GetComponentInChildren<VisualWeapon>();
+        transform.GetChild(0).gameObject.SetActive(true);
     }
 
     private void Start()
@@ -146,6 +147,7 @@ public class Enemy : MonoBehaviour
             case states.attacking:
                 break;
             case states.dying:
+                anim.Play("Base Layer.Hurt");
                 State = states.dead;
                 break;
         }
@@ -182,8 +184,8 @@ public class Enemy : MonoBehaviour
         transform.eulerAngles = spawn.eulerAngles;
         GetComponentInChildren<SkinnedMeshRenderer>().enabled = true;
         GetComponent<CapsuleCollider>().enabled = true;
-        transform.GetChild(0).gameObject.SetActive(true);
         State = states.idle;
+        transform.GetChild(0).gameObject.SetActive(true);
     }
     void GoInactive()
     {

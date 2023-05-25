@@ -51,6 +51,14 @@ public class PlayerHandler : MonoBehaviour
         else anim.Play("Base Layer.Hurt");
     }
 
+    public void Heal(int healAmount)
+    {
+        health += healAmount;
+        if (health >= Global.playerHpStart)
+            health = Global.playerHpStart;
+        healthText.text = baseHealthText + health;
+    }
+
     void Die()
     {
         anim.Play("Base Layer.Died");

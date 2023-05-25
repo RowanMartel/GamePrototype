@@ -54,6 +54,25 @@ public class Inventory : MonoBehaviour
         InventoryUIController.instance.RefreshUI();
         return true;
     }
+    public bool RemoveItem(string id, int amount = 1) => RemoveItem(id.ToHashId(), amount);
+    public bool RemoveItem(int id, int amount = 1)
+    {
+        InventorySlot desiredSlot = default;
+        //See if a slot already has it.
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i].itemId == id)
+            {
+                //found a slot the type we want! yay!
+                desiredSlot = slots[i];
+                break;
+            }
+        }
+
+        desiredSlot.RemoveAmount(amount);
+        InventoryUIController.instance.RefreshUI();
+        return true;
+    }
 }
 
 [Serializable]

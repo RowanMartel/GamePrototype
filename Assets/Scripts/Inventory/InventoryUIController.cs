@@ -17,11 +17,14 @@ public class InventoryUIController : MonoBehaviour
     private static bool m_IsDragging;
     private static InventorySlotUI m_OriginalSlot;
     private EquipMenu equipMenu;
-    private Button m_Button;
+    private UseMenu useMenu;
+    private Button m_Equip;
+    private Button m_Use;
 
     private void Awake()
     {
         equipMenu = FindObjectOfType<EquipMenu>();
+        useMenu = FindObjectOfType<UseMenu>();
         instance = this;
         m_Root = GetComponent<UIDocument>().rootVisualElement;
         m_SlotContainer = m_Root.Q<VisualElement>("SlotContainer");
@@ -33,8 +36,10 @@ public class InventoryUIController : MonoBehaviour
             m_SlotContainer.Add(item);
         }
         m_GhostIcon = m_Root.Query<VisualElement>("GhostIcon");
-        m_Button = m_Root.Query<Button>();
-        m_Button.RegisterCallback<ClickEvent>(OpenEquip);
+        m_Equip = m_Root.Query<Button>("Equip");
+        m_Use = m_Root.Query<Button>("Use");
+        m_Equip.RegisterCallback<ClickEvent>(OpenEquip);
+        m_Use.RegisterCallback<ClickEvent>(OpenUse);
         m_SlotContainer.RegisterCallback<PointerMoveEvent>(OnPointerMove);
         m_GhostIcon.RegisterCallback<PointerMoveEvent>(OnPointerMove);
         m_GhostIcon.RegisterCallback<PointerUpEvent>(OnPointerUp);
@@ -45,6 +50,11 @@ public class InventoryUIController : MonoBehaviour
     {
         m_Root.visible = false;
         equipMenu.OpenMenu();
+    }
+    private void OpenUse(ClickEvent evt)
+    {
+        m_Root.visible = false;
+        useMenu.OpenMenu();
     }
 
     public static void StartDrag(Vector2 position, InventorySlotUI originalSlot)

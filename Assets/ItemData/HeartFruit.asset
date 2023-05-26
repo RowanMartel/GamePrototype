@@ -19,9 +19,9 @@ MonoBehaviour:
   description: Eat it to regain health
   plantMesh: {fileID: 2534964839176971238, guid: f2dfc53cb31e28540821bd0f5fbe1360, type: 3}
   plantMaterial: {fileID: 3148173409421532384, guid: f2dfc53cb31e28540821bd0f5fbe1360, type: 3}
-  positionOffset: {x: 0, y: 0, z: 0}
-  rotation: {x: 0, y: 0, z: 0}
-  scale: {x: 0.098, y: 0.098, z: 0.257}
+  positionOffset: {x: 0, y: 0, z: -0.05}
+  rotation: {x: 34, y: 0, z: 0}
+  scale: {x: 0.049, y: 0.049, z: 0.1285}
   plantable: 0
   growsInto: {fileID: 0}
   equippable: 0

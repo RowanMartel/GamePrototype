@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     float timer;
     bool attackWait;
     Animator anim;
+    AudioSource audioSource;
 
     [SerializeField]
     GameObject itemDrop;
@@ -58,6 +59,7 @@ public class Enemy : MonoBehaviour
         State = states.inactive;
         weapon = GetComponentInChildren<VisualWeapon>();
         transform.GetChild(0).gameObject.SetActive(true);
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -169,6 +171,7 @@ public class Enemy : MonoBehaviour
             State = states.dying;
         }
         else anim.Play("Base Layer.Hurt");
+        audioSource.Play();
     }
 
     bool InAttackRange()

@@ -21,7 +21,7 @@ MonoBehaviour:
   plantMaterial: {fileID: 3148173409421532384, guid: f2dfc53cb31e28540821bd0f5fbe1360, type: 3}
   positionOffset: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0}
-  scale: {x: -0.098, y: -0.098, z: -0.257}
+  scale: {x: -0.049, y: -0.049, z: -0.1285}
   plantable: 1
   growsInto: {fileID: 11400000, guid: e3a6aa44d1b99b046bc04e988f2b7512, type: 2}
   equippable: 0

@@ -13,6 +13,10 @@ public class PlayerHandler : MonoBehaviour
     string baseHealthText;
     Animator anim;
     TitleMenu titleMenu;
+    public static AudioSource audioSource;
+    [SerializeField] AudioClip s_Hurt;
+    [SerializeField] AudioClip s_Heal;
+    [SerializeField] AudioClip s_GameOver;
 
     // velocity
     Vector3 PrevPos;
@@ -21,6 +25,7 @@ public class PlayerHandler : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         titleMenu = FindObjectOfType<TitleMenu>();
         PrevPos = transform.position;
         NewPos = transform.position;
@@ -48,11 +53,16 @@ public class PlayerHandler : MonoBehaviour
         if (health < 0) health = 0;
         healthText.text = baseHealthText + health;
         if (health <= 0) Die();
-        else anim.Play("Base Layer.Hurt");
+        else
+        {
+            anim.Play("Base Layer.Hurt");
+            audioSource.PlayOneShot(s_Hurt);
+        }
     }
 
     public void Heal(int healAmount)
     {
+        audioSource.PlayOneShot(s_Heal);
         health += healAmount;
         if (health >= Global.playerHpStart)
             health = Global.playerHpStart;
@@ -61,7 +71,13 @@ public class PlayerHandler : MonoBehaviour
 
     void Die()
     {
+        audioSource.PlayOneShot(s_GameOver);
         anim.Play("Base Layer.Died");
         titleMenu.EndScreen();
+    }
+
+    public static void PlayClip(AudioClip s_Clip)
+    {
+        audioSource.PlayOneShot(s_Clip);
     }
 }

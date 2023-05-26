@@ -8,6 +8,8 @@ public class Pickup : MonoBehaviour
     public Item item;
     [SerializeField]
     int amount;
+    [SerializeField]
+    AudioClip s_Pickup;
 
     Inventory inventory;
 
@@ -38,6 +40,7 @@ public class Pickup : MonoBehaviour
             GetComponent<MeshCollider>().enabled = false;
             inventory.AddItem(item.id, amount);
             Score.modifyScore(1);
+            PlayerHandler.PlayClip(s_Pickup);
             Destroy(gameObject);
         }
     }

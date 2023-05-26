@@ -50,6 +50,7 @@ public class TitleMenu : MonoBehaviour
 
     void StartGame(ClickEvent evt)
     {
+        BGM.StartBGM();
         m_Root.visible = false;
         Time.timeScale = 1;
         Global.MenuOpen = false;
@@ -61,6 +62,7 @@ public class TitleMenu : MonoBehaviour
 
     public void EndScreen()
     {
+        BGM.StopBGM();
         Time.timeScale = 0;
         Global.MenuOpen = true;
         n_Root.visible = true;

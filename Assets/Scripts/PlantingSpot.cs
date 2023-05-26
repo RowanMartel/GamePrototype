@@ -11,9 +11,13 @@ public class PlantingSpot : MonoBehaviour
     private float growTimer;
     public Item.Growth growth;
     private Inventory inventory;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip s_Plant;
+    [SerializeField] private AudioClip s_Pick;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         hasPlant = false;
         inventory = FindObjectOfType<Inventory>();
     }
@@ -54,13 +58,16 @@ public class PlantingSpot : MonoBehaviour
         this.plant = plant.growsInto;
         hasPlant = true;
         growTimer = 0;
+        audioSource.PlayOneShot(s_Plant);
     }
     public void Harvest() {
         inventory.AddItem(plant.hashId);
         Score.modifyScore(10);
         RemovePlant();
+        audioSource.PlayOneShot(s_Pick);
     }
     public void RemovePlant() {
         hasPlant = false;
+        audioSource.PlayOneShot(s_Pick);
     }
 }

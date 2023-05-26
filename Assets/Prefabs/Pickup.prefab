@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   amount: 1
+  s_Pickup: {fileID: 8300000, guid: d80f714f0f9d73f438a277e2b6ddf97c, type: 3}
 --- !u!64 &-924526496687752159
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class Pickup : MonoBehaviour
         GetComponent<MeshRenderer>().material = item.plantMaterial;
         inventory = FindObjectOfType<Inventory>();
         transform.localScale = item.scale;
-        GetComponent<MeshCollider>().sharedMesh = item.plantMesh;
+        //GetComponent<MeshCollider>().sharedMesh = item.plantMesh;
     }
 
     void Update()

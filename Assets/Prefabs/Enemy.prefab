@@ -294,6 +294,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5887490522422979285, guid: 95f506e296d16b440b37941f452c8b30, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887490522422979285, guid: 95f506e296d16b440b37941f452c8b30, type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 6383963337072872545, guid: 95f506e296d16b440b37941f452c8b30, type: 3}
       propertyPath: m_RootOrder
       value: -1

@@ -1,12 +1,5 @@
-using KinematicCharacterController.Examples;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.UIElements;
-using UnityEngine.WSA;
 using Button = UnityEngine.UIElements.Button;
 
 public class PlantingMenu : MonoBehaviour
